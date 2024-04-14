@@ -15,7 +15,11 @@ abstract class AppTextStyles {
   );
   static const mediumTitle14 = TextStyle(
     fontSize: 14,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w700,
+  );
+  static const mediumTitleBlue14 = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w700,
     color: Color(0xff79A3D3),
   );
   static const mediumTitleBlack14 = TextStyle(

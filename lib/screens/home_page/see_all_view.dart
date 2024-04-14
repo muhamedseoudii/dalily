@@ -1,10 +1,10 @@
 import 'package:dalily/component/list_categories.dart';
-import 'package:dalily/mvc/controllers/top_items_controller.dart';
-import 'package:dalily/mvc/model/top_item_model.dart';
+import 'package:dalily/features/controllers/top_items_controller.dart';
+import 'package:dalily/features/model/top_item_model.dart';
 import 'package:dalily/screens/home_page/items_information.dart';
-import 'package:dalily/screens/home_page/search_page.dart';
+import 'package:dalily/screens/navigator_bar/view.dart';
+import 'package:dalily/screens/search_page/search_view.dart';
 import 'package:dalily/utils/app_text_styles.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';

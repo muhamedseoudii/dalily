@@ -1,6 +1,6 @@
 import 'package:dalily/component/buttom_custom.dart';
 import 'package:dalily/component/text_field_custom.dart';
-import 'package:dalily/mvc/controllers/reset_pass_controller.dart';
+import 'package:dalily/features/controllers/reset_pass_controller.dart';
 import 'package:dalily/screens/forget_password/reset_pass_success.dart';
 import 'package:dalily/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';

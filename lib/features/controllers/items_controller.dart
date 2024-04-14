@@ -1,14 +1,14 @@
-import 'package:dalily/mvc/model/item_model.dart';
-import 'package:dio/dio.dart';
+import 'package:dalily/features/model/item_model.dart';
 import 'package:get/get.dart';
+import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class CategoryItemController extends GetxController {
+class ItemController extends GetxController {
   RxBool isLoading = true.obs;
-  RxList<ItemData> categories = <ItemData>[].obs;
+  RxList<ItemData> items = <ItemData>[].obs;
   RxBool isError = false.obs;
 
-  Future<void> fetchItemCategories(String title) async {
+  Future<void> fetchItems() async {
     try {
       isLoading(true);
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -16,18 +16,20 @@ class CategoryItemController extends GetxController {
       Dio dio = Dio();
       final response = await dio.get(
         "https://dalilalhafr.com/api/items/getItems",
-        data: {"title": title},
         options: Options(headers: {
           'Authorization': 'Bearer $token',
         }),
       );
-      print(response.data); // Print API response for debugging
-      var itemModel = ItemModel.fromJson(response.data);
-      categories(itemModel.data);
-      print(itemModel); // Print parsed CategoryModel for debugging
-      isError(false);
+      var data = response.data;
+      if (data != null) {
+        items.value = List<ItemData>.from(
+          data['data'].map((item) => ItemData.fromJson(item)),
+        );
+        isError(false);
+      } else {
+        isError(true);
+      }
     } catch (error) {
-      print(error); // Print error for debugging
       isError(true);
     } finally {
       isLoading(false);

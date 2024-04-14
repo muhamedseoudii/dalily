@@ -1,3 +1,4 @@
+import 'package:dalily/features/controllers/locale_controller.dart';
 import 'package:dalily/screens/forget_password/forgetpass_view.dart';
 import 'package:dalily/screens/login/login_view.dart';
 import 'package:dalily/screens/navigator_bar/view.dart';
@@ -10,7 +11,6 @@ import 'package:dalily/utils/themes_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../mvc/controllers/locale_controller.dart';
 
 class AppRoot extends StatelessWidget {
   const AppRoot({super.key});
@@ -53,6 +53,13 @@ class AppRoot extends StatelessWidget {
               name: '/home',
               page: () => MyNavigatorBar(
                 title: 'Home',
+              ),
+              binding: MyBindings(),
+            ),
+            GetPage(
+              name: '/search',
+              page: () => MyNavigatorBar(
+                title: 'Search',
               ),
               binding: MyBindings(),
             ),

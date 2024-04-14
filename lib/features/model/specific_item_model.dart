@@ -43,7 +43,7 @@ class SpecificItemData {
       name: json['name'],
       description: json['description'],
       category: SpecificItemCategoryData.fromJson(json['category']),
-      ratingsAverage: json['ratingsAverage'].toDouble(),
+      ratingsAverage: json['ratingsAverage'].toDouble() ?? 0,
       ratingsQuantity: json['ratingsQuantity'],
       images: List<String>.from(json['images'].map((x) => x)),
       about: json['About'],

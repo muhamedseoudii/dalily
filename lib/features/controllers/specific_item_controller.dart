@@ -1,4 +1,4 @@
-import 'package:dalily/mvc/model/specific_item_model.dart';
+import 'package:dalily/features/model/specific_item_model.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
@@ -45,7 +45,6 @@ class SpecificItemController extends GetxController {
 
   Future<bool> sendItemReview(
       String itemId, String review, double rating) async {
-    print('i executed');
     try {
       isLoadingReview(true);
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -71,7 +70,7 @@ class SpecificItemController extends GetxController {
         isErrorReview(true);
         return false;
       }
-    } catch (error, st) {
+    } catch (error) {
       isErrorReview(true);
       return false;
     } finally {

@@ -48,8 +48,8 @@ class _HomeBarViewState extends State<HomeBarView> {
           ItemBottom(
             unselectedImage: "message",
             isSelected: currentPage == 1,
-            image: "star",
-            title: "Favorites".tr,
+            image: "newSearch",
+            title: "Search".tr,
             onTap: () {
               widget.controller.jumpToPage(1);
               currentPage = 1;

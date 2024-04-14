@@ -1,6 +1,6 @@
 import 'package:dalily/component/buttom_custom.dart';
 import 'package:dalily/component/text_field_custom.dart';
-import 'package:dalily/mvc/controllers/register_controllers.dart';
+import 'package:dalily/features/controllers/register_controllers.dart';
 import 'package:dalily/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -94,7 +94,7 @@ class RegisterView extends StatelessWidget {
                                 },
                                 child: Text(
                                   "Login".tr,
-                                  style: AppTextStyles.mediumTitle14,
+                                  style: AppTextStyles.mediumTitleBlue14,
                                 ),
                               ),
                             ],

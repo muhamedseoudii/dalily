@@ -1,9 +1,8 @@
+import 'package:dalily/features/controllers/login_controllers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-
-import '../mvc/controllers/login_controllers.dart';
 
 class TextFieldEdit extends StatelessWidget {
   final String text;
@@ -326,6 +325,7 @@ class SearchTextField extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
   final void Function()? onClick;
+  final void Function(String)? onChanged;
 
   const SearchTextField(
       {Key? key,
@@ -333,13 +333,15 @@ class SearchTextField extends StatelessWidget {
       required this.image,
       required this.hintText,
       this.onClick,
-      required this.controller})
+      required this.controller,
+      this.onChanged})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
+      onChanged: onChanged,
       keyboardType: TextInputType.text,
       decoration: InputDecoration(
         hintText: text,

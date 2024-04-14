@@ -1,4 +1,4 @@
-import 'package:dalily/mvc/model/top_item_model.dart';
+import 'package:dalily/features/model/top_item_model.dart';
 import 'package:get/get.dart';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';

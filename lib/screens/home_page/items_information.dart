@@ -1,7 +1,8 @@
 import 'package:dalily/component/buttom_custom.dart';
 import 'package:dalily/component/text_field_custom.dart';
-import 'package:dalily/mvc/controllers/specific_item_controller.dart';
-import 'package:dalily/mvc/model/specific_item_model.dart';
+import 'package:dalily/features/controllers/specific_item_controller.dart';
+import 'package:dalily/features/model/specific_item_model.dart';
+import 'package:dalily/screens/home_page/review_view.dart';
 import 'package:dalily/utils/app_text_styles.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,7 @@ class ItemsInformationView extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController commentController = TextEditingController();
     String comment = '';
-    double rating = 0;
+    double rating = 0.0;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -53,11 +54,16 @@ class ItemsInformationView extends StatelessWidget {
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Image.network(
-                              item.backGroundImage,
-                              fit: BoxFit.cover,
-                              width: 343.w,
-                              height: 168.h,
+                            Container(
+                              clipBehavior: Clip.antiAlias,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(16.r)),
+                              child: Image.network(
+                                item.backGroundImage,
+                                fit: BoxFit.cover,
+                                width: 343.w,
+                                height: 168.h,
+                              ),
                             ),
                             SizedBox(height: 5.h),
                             Row(
@@ -69,13 +75,24 @@ class ItemsInformationView extends StatelessWidget {
                                         color: Colors.yellow),
                                     Text(
                                       item.ratingsAverage.toString(),
-                                      style: AppTextStyles.mediumTitle14,
+                                      style: AppTextStyles.mediumTitleBlue14,
                                     ),
+                                    TextButton(
+                                        onPressed: () {
+                                          Get.to(
+                                            () => ReviewView(id: item.id),
+                                          );
+                                        },
+                                        child: Text(
+                                          "reviews".tr,
+                                          style:
+                                              AppTextStyles.mediumTitleBlue14,
+                                        ))
                                   ],
                                 ),
                                 Text(
                                   item.name.tr,
-                                  style: AppTextStyles.mediumTitle14,
+                                  style: AppTextStyles.mediumTitleBlue14,
                                 )
                               ],
                             ),
@@ -100,30 +117,37 @@ class ItemsInformationView extends StatelessWidget {
                               style: AppTextStyles.mediumTitleBlue16,
                             ),
                             SizedBox(height: 10.h),
-                            SizedBox(
-                              height: 200.h,
-                              child: ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: item.images.length,
-                                itemBuilder: (context, index) {
-                                  return SizedBox(
-                                    width: 100,
-                                    height: 100,
-                                    child: Container(
-                                      height: 100,
-                                      width: 100,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(16),
-                                      ),
-                                      child: Image.network(
-                                        item.images[index],
-                                        fit: BoxFit.cover,
-                                      ),
+                            specificItemController.isLoading.isTrue
+                                ? const Center(
+                                    child: CircularProgressIndicator())
+                                : SizedBox(
+                                    height: 200.h,
+                                    child: ListView.builder(
+                                      scrollDirection: Axis.horizontal,
+                                      itemCount: item.images.length,
+                                      itemBuilder: (context, index) {
+                                        return Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 10.h),
+                                          child: SizedBox(
+                                            width: 335.w,
+                                            height: 168.h,
+                                            child: Container(
+                                              clipBehavior: Clip.antiAlias,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(16),
+                                              ),
+                                              child: Image.network(
+                                                item.images[index],
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      },
                                     ),
-                                  );
-                                },
-                              ),
-                            ),
+                                  ),
                             SizedBox(height: 30.h),
                             FilledButtomEdit(
                               text: "Rate Us".tr,

@@ -1,4 +1,4 @@
-import 'package:dalily/mvc/model/category_model.dart';
+import 'package:dalily/features/model/category_model.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,7 +20,7 @@ class CategoryController extends GetxController {
           'Authorization': 'Bearer $token',
         }),
       );
-      print(response.data); // Print API response for debugging
+      // print(response.data); // Print API response for debugging
       var categoryModel = CategoryModel.fromJson(response.data);
       categories(categoryModel.data);
       print(categoryModel); // Print parsed CategoryModel for debugging

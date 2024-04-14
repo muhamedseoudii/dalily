@@ -75,11 +75,15 @@ class RecommendedPlacesComponent extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image.network(
-          image,
-          fit: BoxFit.fill,
-          width: 152.w,
-          height: 87.h,
+        Container(
+          clipBehavior: Clip.antiAlias,
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(16.r)),
+          child: Image.network(
+            image,
+            fit: BoxFit.fill,
+            width: 152.w,
+            height: 87.h,
+          ),
         ),
         SizedBox(height: 5.h),
         Text(
@@ -117,11 +121,16 @@ class RecommendedPlacesAllComponent extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Center(
-          child: Image.network(
-            image,
-            fit: BoxFit.fill,
-            width: 300.w,
-            height: 120.h,
+          child: Container(
+            clipBehavior: Clip.antiAlias,
+            decoration:
+                BoxDecoration(borderRadius: BorderRadius.circular(16.r)),
+            child: Image.network(
+              image,
+              fit: BoxFit.fill,
+              width: 300.w,
+              height: 120.h,
+            ),
           ),
         ),
         SizedBox(height: 5.h),

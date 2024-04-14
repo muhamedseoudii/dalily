@@ -1,4 +1,4 @@
-import 'package:dalily/mvc/controllers/locale_controller.dart';
+import 'package:dalily/features/controllers/locale_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

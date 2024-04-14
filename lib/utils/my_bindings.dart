@@ -1,14 +1,14 @@
-import 'package:dalily/mvc/controllers/forget_pass_controller.dart';
-import 'package:dalily/mvc/controllers/home_controller.dart';
-import 'package:dalily/mvc/controllers/items_controller.dart';
-import 'package:dalily/mvc/controllers/locale_controller.dart';
-import 'package:dalily/mvc/controllers/login_controllers.dart';
-import 'package:dalily/mvc/controllers/otp_controller.dart';
-import 'package:dalily/mvc/controllers/profile_controller.dart';
-import 'package:dalily/mvc/controllers/register_controllers.dart';
-import 'package:dalily/mvc/controllers/reset_pass_controller.dart';
-import 'package:dalily/mvc/controllers/top_items_controller.dart';
-import 'package:dalily/mvc/controllers/url_controller.dart';
+import 'package:dalily/features/controllers/forget_pass_controller.dart';
+import 'package:dalily/features/controllers/home_controller.dart';
+import 'package:dalily/features/controllers/items_controller.dart';
+import 'package:dalily/features/controllers/locale_controller.dart';
+import 'package:dalily/features/controllers/login_controllers.dart';
+import 'package:dalily/features/controllers/otp_controller.dart';
+import 'package:dalily/features/controllers/profile_controller.dart';
+import 'package:dalily/features/controllers/register_controllers.dart';
+import 'package:dalily/features/controllers/reset_pass_controller.dart';
+import 'package:dalily/features/controllers/top_items_controller.dart';
+import 'package:dalily/features/controllers/url_controller.dart';
 import 'package:get/get.dart';
 
 class MyBindings implements Bindings {

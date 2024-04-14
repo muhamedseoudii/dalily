@@ -99,6 +99,9 @@ class MyLocale implements Translations {
           "Sign Out": "تسجيل الخروج",
           "Delete Account": "حذف الحساب",
           "all places": "جميع الأماكن",
+          "reviews": "المراجعات",
+          "rest password": "إعادة تعيين كلمة المرور",
+          "Search": "بحث",
           "text": '''
 نحن في تطبيق سوريا لايف ملتزمون بحماية خصوصية المستخدمين لدينا وتأمين البيانات الشخصية التي نجمعها ونعالجها. يرجى قراءة سياسة الخصوصية هذه بعناية لفهم كيفية جمعنا واستخدامنا وحماية بياناتك الشخصية.
 
@@ -227,6 +230,9 @@ class MyLocale implements Translations {
           "Sign Out": "Sign Out",
           "Delete Account": "Delete Account",
           "all places": "All places",
+          "reviews": "Reviews",
+          "rest password": "Reset password",
+          "Search": "Search",
           "text":
               '''We at Syria Live application are committed to protecting the privacy of our users and securing the personal data we collect and process. Please read this privacy policy carefully to understand how we collect, use, and protect your personal data.
 

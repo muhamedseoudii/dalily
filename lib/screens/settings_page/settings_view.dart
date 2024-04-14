@@ -1,5 +1,5 @@
 import 'package:dalily/component/settings_list_tile.dart';
-import 'package:dalily/mvc/controllers/url_controller.dart';
+import 'package:dalily/features/controllers/url_controller.dart';
 import 'package:dalily/screens/settings_page/change_language.dart';
 import 'package:dalily/screens/settings_page/policies_privacy.dart';
 import 'package:dalily/utils/app_text_styles.dart';
@@ -43,8 +43,8 @@ class SettingsPageView extends StatelessWidget {
                   SettingsListTile(
                     text: "Night mode".tr,
                     image: "moon",
-                    widget:
-                        Text("Default".tr, style: AppTextStyles.mediumTitle14),
+                    widget: Text("Default".tr,
+                        style: AppTextStyles.mediumTitleBlue14),
                   ),
                   SizedBox(height: 15.h),
                   const Divider(
@@ -116,6 +116,13 @@ class SettingsPageView extends StatelessWidget {
                       text: "Policies & Privacy".tr,
                       image: "polices",
                       widget: const Icon(Icons.arrow_forward_ios_outlined),
+                    ),
+                  ),
+                  SizedBox(height: 250.h),
+                  const Center(
+                    child: Text(
+                      "V1.0 ©DalilAlhafr | by Arcodx",
+                      style: AppTextStyles.mediumGreyTitle14,
                     ),
                   ),
                 ],

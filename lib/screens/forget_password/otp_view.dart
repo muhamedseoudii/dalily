@@ -1,6 +1,6 @@
 import 'package:dalily/component/buttom_custom.dart';
 import 'package:dalily/component/text_field_custom.dart';
-import 'package:dalily/mvc/controllers/otp_controller.dart';
+import 'package:dalily/features/controllers/otp_controller.dart';
 import 'package:dalily/screens/forget_password/reset_pass.dart';
 import 'package:dalily/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -75,8 +75,8 @@ class OTPView extends StatelessWidget {
                                         : null,
                                     child: Text(
                                       "Resend Code".tr,
-                                      style:
-                                          AppTextStyles.mediumTitle14.copyWith(
+                                      style: AppTextStyles.mediumTitleBlue14
+                                          .copyWith(
                                         color:
                                             controller.remainingTime.value > 0
                                                 ? Colors.grey
@@ -98,8 +98,8 @@ class OTPView extends StatelessWidget {
                                     .validate()) {
                                   // Passwords are valid and match
                                   // Perform further actions like saving the password
-                                  // controller.login();
-                                  Get.to(() => const ResetPasswordView());
+                                  controller.verifyEmailOtp();
+                                  // Get.to(() => const ResetPasswordView());
                                 }
                               },
                             ),

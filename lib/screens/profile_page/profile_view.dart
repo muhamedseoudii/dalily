@@ -1,7 +1,7 @@
 import 'package:dalily/component/buttom_custom.dart';
 import 'package:dalily/component/settings_list_tile.dart';
-import 'package:dalily/mvc/controllers/image_picker_controller.dart';
-import 'package:dalily/mvc/controllers/profile_controller.dart';
+import 'package:dalily/features/controllers/image_picker_controller.dart';
+import 'package:dalily/features/controllers/profile_controller.dart';
 import 'package:dalily/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
