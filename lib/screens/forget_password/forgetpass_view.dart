@@ -50,9 +50,9 @@ class ForgetPasswordView extends StatelessWidget {
                           children: [
                             TextFieldEdit(
                               controller: controller.controllerEmail,
-                              text: "Email".tr,
+                              labelText: "Email".tr,
                               image: "assets/icons/sms.svg",
-                              hintText: "Please enter your Email",
+                              validateText: "Please enter your Email",
                             ),
                             SizedBox(height: 40.h),
                             Row(

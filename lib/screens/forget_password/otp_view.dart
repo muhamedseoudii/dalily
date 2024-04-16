@@ -50,9 +50,9 @@ class OTPView extends StatelessWidget {
                           children: [
                             TextFieldEdit(
                               controller: controller.controllerOTP,
-                              text: "OTP".tr,
+                              labelText: "OTP".tr,
                               image: "assets/icons/OTP.svg",
-                              hintText: "Please enter the code".tr,
+                              validateText: "Please enter the code".tr,
                             ),
                             SizedBox(height: 30.h),
                             Obx(() {

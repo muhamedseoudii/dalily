@@ -102,6 +102,15 @@ class MyLocale implements Translations {
           "reviews": "المراجعات",
           "rest password": "إعادة تعيين كلمة المرور",
           "Search": "بحث",
+          "no items found": "لم يتم العثور على العناصر",
+          "change password": "تغيير كلمة المرور",
+          "save": "حفظ",
+          "enter your new name": "أدخل اسمك الجديد",
+          "please enter your name": "من فضلك أدخل إسمك",
+          "enter your current password": "أدخل كلمة المرور الحالية",
+          "enter your new password": "أدخل كلمة المرور الجديدة",
+          "enter confirm new password": "أدخل تأكيد كلمة المرور الجديدة",
+          "picture of us": "صور لنا",
           "text": '''
 نحن في تطبيق سوريا لايف ملتزمون بحماية خصوصية المستخدمين لدينا وتأمين البيانات الشخصية التي نجمعها ونعالجها. يرجى قراءة سياسة الخصوصية هذه بعناية لفهم كيفية جمعنا واستخدامنا وحماية بياناتك الشخصية.
 
@@ -233,6 +242,15 @@ class MyLocale implements Translations {
           "reviews": "Reviews",
           "rest password": "Reset password",
           "Search": "Search",
+          "no items found": "No items found",
+          "change password": "Change password",
+          "save": "Save",
+          "enter your new name": "Enter your new name",
+          "please enter your name": "Please enter your name",
+          "enter your current password": "Enter your current password",
+          "enter your new password": "Enter your new password",
+          "enter confirm new password": "Enter confirm new password",
+          "picture of us": "Picture of Us",
           "text":
               '''We at Syria Live application are committed to protecting the privacy of our users and securing the personal data we collect and process. Please read this privacy policy carefully to understand how we collect, use, and protect your personal data.
 

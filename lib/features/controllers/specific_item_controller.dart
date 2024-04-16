@@ -29,13 +29,15 @@ class SpecificItemController extends GetxController {
       } // Print API response for debugging
       var specificItemModel = SpecificItemModel.fromJson(response.data);
       specificItemData(specificItemModel.data);
+
       if (kDebugMode) {
         print(specificItemModel);
       } // Print parsed CategoryModel for debugging
       isError(false);
-    } catch (error) {
+    } catch (error, st) {
       if (kDebugMode) {
         print(error);
+        print(st);
       } // Print error for debugging
       isError(true);
     } finally {

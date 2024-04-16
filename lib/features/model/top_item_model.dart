@@ -40,7 +40,8 @@ class TopItemData {
       name: json['name'],
       description: json['description'],
       category: TopCategoryData.fromJson(json['category']),
-      backGroundImage: json['backGroundImage'],
+      backGroundImage: json['backGroundImage'] ??
+          'https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png',
     );
   }
 }

@@ -5,17 +5,20 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class TextFieldEdit extends StatelessWidget {
-  final String text;
+  final String? labelText, hintText;
   final String image;
   final TextEditingController controller;
-  final String hintText;
+  final String validateText;
+  final Widget? icon;
 
   const TextFieldEdit(
       {Key? key,
-      required this.text,
+      this.labelText,
       required this.image,
       required this.controller,
-      required this.hintText})
+      required this.validateText,
+      this.icon,
+      this.hintText})
       : super(key: key);
 
   @override
@@ -25,7 +28,8 @@ class TextFieldEdit extends StatelessWidget {
       controller: controller,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
-        labelText: text,
+        hintText: hintText,
+        labelText: labelText,
         labelStyle: TextStyle(
           color: const Color(0xff9CA3AF),
           fontSize: 14.sp,
@@ -33,6 +37,7 @@ class TextFieldEdit extends StatelessWidget {
         ),
         hintMaxLines: 1,
         prefixIcon: SvgPicture.asset(image, fit: BoxFit.scaleDown),
+        suffixIcon: icon,
         filled: true,
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(8.r)),
@@ -53,7 +58,7 @@ class TextFieldEdit extends StatelessWidget {
       ),
       validator: (value) {
         if (value!.isEmpty) {
-          return hintText;
+          return validateText;
         }
         return null;
       },
@@ -207,8 +212,8 @@ class TextFieldEdit4 extends StatelessWidget {
       controller: controller1,
       keyboardType: TextInputType.visiblePassword,
       decoration: InputDecoration(
-        labelText: text,
-        labelStyle: TextStyle(
+        hintText: text,
+        hintStyle: TextStyle(
           color: const Color(0xff9CA3AF),
           fontSize: 14.sp,
           fontWeight: FontWeight.w400,
@@ -275,8 +280,8 @@ class TextFieldEdit3 extends StatelessWidget {
       controller: controller3,
       keyboardType: TextInputType.visiblePassword,
       decoration: InputDecoration(
-        labelText: text,
-        labelStyle: TextStyle(
+        hintText: text,
+        hintStyle: TextStyle(
           color: const Color(0xff9CA3AF),
           fontSize: 14.sp,
           fontWeight: FontWeight.w400,

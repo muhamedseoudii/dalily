@@ -54,9 +54,9 @@ class RegisterView extends StatelessWidget {
                           SizedBox(height: 20.h),
                           TextFieldEdit(
                             controller: controller.controller1,
-                            text: "Email".tr,
+                            labelText: "Email".tr,
                             image: "assets/icons/sms.svg",
-                            hintText: "Please enter your Email",
+                            validateText: "Please enter your Email",
                           ),
                           SizedBox(height: 20.h),
                           TextFieldEdit4(

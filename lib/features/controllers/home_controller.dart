@@ -33,31 +33,3 @@ class CategoryController extends GetxController {
     }
   }
 }
-
-// class CategoryController extends GetxController {
-//   RxBool isLoading = true.obs;
-//   RxList<CategoryData> categories = <CategoryData>[].obs;
-//   RxBool isError = false.obs;
-//
-//   Future<void> fetchCategories() async {
-//     try {
-//       isLoading(true);
-//       SharedPreferences prefs = await SharedPreferences.getInstance();
-//       String token = prefs.getString('token') ?? '';
-//       Dio dio = Dio();
-//       final response = await dio.get(
-//         "https://dalilalhafr.com/api/cats/getCats",
-//         options: Options(headers: {
-//           'Authorization': 'Bearer $token',
-//         }),
-//       );
-//       var categoryModel = CategoryModel.fromJson(response.data);
-//       categories(categoryModel.data);
-//       isError(false);
-//     } catch (error) {
-//       isError(true);
-//     } finally {
-//       isLoading(false);
-//     }
-//   }
-// }

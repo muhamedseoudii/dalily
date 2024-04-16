@@ -21,9 +21,9 @@ class MyBindings implements Bindings {
     Get.put(ForgetController());
     Get.put(OTPController());
     Get.put(ResetPassController());
-    Get.put(CategoryController()..fetchCategories());
-    Get.put(TopItemController()..fetchItems());
-    Get.put(ItemController()..fetchItems());
-    Get.put(ProfileController()..fetchUser());
+    Get.put(CategoryController());
+    Get.put(TopItemController());
+    Get.put(ItemController());
+    Get.put(ProfileController());
   }
 }

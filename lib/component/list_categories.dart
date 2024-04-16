@@ -18,11 +18,12 @@ class ListCategoriesComponent extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Image.network(
-          image,
-          fit: BoxFit.cover,
-          width: 50.w,
-          height: 50.h,
+        CircleAvatar(
+          backgroundColor: Colors.white,
+          radius: 25.r,
+          backgroundImage: NetworkImage(
+            image,
+          ),
         ),
         SizedBox(
           height: 5.h,

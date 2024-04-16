@@ -45,7 +45,8 @@ class ItemData {
       category: CategoryItemData.fromJson(json['category'][0]),
       ratingsAverage: json['ratingsAverage'].toDouble(),
       ratingsQuantity: json['ratingsQuantity'],
-      backGroundImage: json['backGroundImage'],
+      backGroundImage: json['backGroundImage'] ??
+          'https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png',
     );
   }
 }

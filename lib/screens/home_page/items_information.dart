@@ -113,7 +113,7 @@ class ItemsInformationView extends StatelessWidget {
                             ),
                             SizedBox(height: 20.h),
                             Text(
-                              "Picture of Us".tr,
+                              "picture of us".tr,
                               style: AppTextStyles.mediumTitleBlue16,
                             ),
                             SizedBox(height: 10.h),

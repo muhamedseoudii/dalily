@@ -29,8 +29,10 @@ class TopItemController extends GetxController {
       } else {
         isError(true);
       }
-    } catch (error) {
+    } catch (error, st) {
       isError(true);
+      print(error);
+      print(st);
     } finally {
       isLoading(false);
     }

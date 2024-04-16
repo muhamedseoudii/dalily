@@ -1,5 +1,6 @@
 import 'package:dalily/features/controllers/reviews_controller.dart';
 import 'package:dalily/utils/app_text_styles.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,7 +18,6 @@ class ReviewView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
         title: Text(
           "reviews".tr,
           style: AppTextStyles.largeTitle16,
@@ -26,44 +26,41 @@ class ReviewView extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16).w,
-          child: SingleChildScrollView(
-            physics: const AlwaysScrollableScrollPhysics(),
-            child: Column(
-              children: [
-                Obx(
-                  () => SizedBox(
-                    height: 200.h,
-                    child: ListView.builder(
-                      itemCount: reviewsController.reviews.length,
-                      itemBuilder: (context, index) {
-                        var review = reviewsController.reviews[index];
-                        return Card(
-                          child: ListTile(
-                            leading: Image.network(
-                              review.user.profileImage,
-                              fit: BoxFit.cover,
-                            ),
-                            title: Text(
-                              review.user.name,
-                              style: AppTextStyles.mediumTitle14,
-                            ),
-                            subtitle: Text(
-                              review.review,
-                              style: AppTextStyles.mediumGreyTitle14,
-                            ),
-                            trailing: Text(
-                              review.rating.toString(),
-                              style: AppTextStyles.mediumTitleBlue16,
-                            ),
-                            // Add more details as needed
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Obx(
+                () => Expanded(
+                  child: ListView.builder(
+                    itemCount: reviewsController.reviews.length,
+                    itemBuilder: (context, index) {
+                      var review = reviewsController.reviews[index];
+                      return Card(
+                        child: ListTile(
+                          leading: Image.network(
+                            review.user.profileImage,
+                            fit: BoxFit.cover,
                           ),
-                        );
-                      },
-                    ),
+                          title: Text(
+                            review.user.name,
+                            style: AppTextStyles.mediumTitle14,
+                          ),
+                          subtitle: Text(
+                            review.review,
+                            style: AppTextStyles.mediumGreyTitle14,
+                          ),
+                          trailing: Text(
+                            review.rating.toString(),
+                            style: AppTextStyles.mediumTitleBlue16,
+                          ),
+                          // Add more details as needed
+                        ),
+                      );
+                    },
                   ),
-                )
-              ],
-            ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

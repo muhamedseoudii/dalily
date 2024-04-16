@@ -57,9 +57,9 @@ class LoginView extends StatelessWidget {
                             children: [
                               TextFieldEdit(
                                 controller: controller.controller1,
-                                text: "Email".tr,
+                                labelText: "Email".tr,
                                 image: "assets/icons/sms.svg",
-                                hintText: "Please enter your Email",
+                                validateText: "Please enter your Email",
                               ),
                               SizedBox(height: 20.h),
                               TextFieldEdit1(

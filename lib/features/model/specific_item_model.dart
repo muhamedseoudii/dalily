@@ -18,7 +18,7 @@ class SpecificItemData {
   final String description;
   final SpecificItemCategoryData category;
   final double ratingsAverage;
-  final int ratingsQuantity;
+  final double ratingsQuantity;
   final List<String> images;
   final String about;
   final String backGroundImage;
@@ -44,10 +44,11 @@ class SpecificItemData {
       description: json['description'],
       category: SpecificItemCategoryData.fromJson(json['category']),
       ratingsAverage: json['ratingsAverage'].toDouble() ?? 0,
-      ratingsQuantity: json['ratingsQuantity'],
+      ratingsQuantity: json['ratingsQuantity'].toDouble(),
       images: List<String>.from(json['images'].map((x) => x)),
       about: json['About'],
-      backGroundImage: json['backGroundImage'],
+      backGroundImage: json['backGroundImage'] ??
+          'https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png',
       reviews:
           List<Review>.from(json['reviews'].map((x) => Review.fromJson(x))),
     );
@@ -73,7 +74,7 @@ class Review {
   final String review;
   final UserData user;
   final String item;
-  final int rating;
+  final double rating;
   final String createdAt;
 
   Review({
@@ -91,7 +92,7 @@ class Review {
       review: json['review'],
       user: UserData.fromJson(json['user']),
       item: json['item'],
-      rating: json['rating'],
+      rating: json['rating'].toDouble(),
       createdAt: json['createdAt'],
     );
   }

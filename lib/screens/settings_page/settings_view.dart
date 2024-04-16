@@ -118,7 +118,7 @@ class SettingsPageView extends StatelessWidget {
                       widget: const Icon(Icons.arrow_forward_ios_outlined),
                     ),
                   ),
-                  SizedBox(height: 250.h),
+                  SizedBox(height: 200.h),
                   const Center(
                     child: Text(
                       "V1.0 ©DalilAlhafr | by Arcodx",

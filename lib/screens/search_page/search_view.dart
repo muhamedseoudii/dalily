@@ -21,87 +21,82 @@ class SearchPageView extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16).w,
-          child: ListView(
+          child: Column(
             children: [
-              Column(
-                children: [
-                  SearchTextField(
-                    controller: controller,
-                    text: "Search here".tr,
-                    image: "assets/icons/search.svg",
-                    hintText: "type Something".tr,
-                    onClick: () {
-                      controller.clear();
-                    },
-                    onChanged: (query) {
-                      searchItemController.fetchSearchResults(query);
-                    },
-                  ),
-                  SizedBox(height: 50.h),
-                  Obx(() {
-                    if (searchItemController.search.isEmpty) {
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            "assets/images/searchNotFound.png",
-                            fit: BoxFit.contain,
-                            width: 173.w,
-                            height: 142.h,
-                          ),
-                          SizedBox(height: 15.h),
-                          const Center(
-                            child: Text(
-                              "No items found",
-                              style: AppTextStyles.largeTitle22,
-                            ),
-                          ),
-                        ],
-                      );
-                    } else {
-                      return SizedBox(
-                        height: 200.h,
-                        child: ListView.builder(
-                          itemCount: searchItemController.search.length,
-                          itemBuilder: (context, index) {
-                            SearchData searchItem =
-                                searchItemController.search[index];
-                            return Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  width: 400.w,
-                                  height: 240.w,
-                                  child: InkWell(
-                                    onTap: () {
-                                      Get.to(
-                                        () => ItemsInformationView(
-                                          id: searchItem.id,
-                                        ),
-                                      );
-                                    },
-                                    child: Card(
-                                      clipBehavior: Clip.antiAlias,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(16).w,
-                                        child: RecommendedPlacesAllComponent(
-                                          title: searchItem.name,
-                                          desc: searchItem.description,
-                                          image: searchItem.backgroundImage,
-                                        ),
-                                      ),
+              SearchTextField(
+                controller: controller,
+                text: "Search here".tr,
+                image: "assets/icons/search.svg",
+                hintText: "type Something".tr,
+                onClick: () {
+                  controller.clear();
+                },
+                onChanged: (query) {
+                  searchItemController.fetchSearchResults(query);
+                },
+              ),
+              SizedBox(height: 50.h),
+              Obx(() {
+                if (searchItemController.search.isEmpty) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/searchNotFound.png",
+                        fit: BoxFit.contain,
+                        width: 173.w,
+                        height: 142.h,
+                      ),
+                      SizedBox(height: 20.h),
+                      Center(
+                        child: Text(
+                          "no items found".tr,
+                          style: AppTextStyles.largeTitle22,
+                        ),
+                      ),
+                    ],
+                  );
+                } else {
+                  return Expanded(
+                    child: ListView.builder(
+                      itemCount: searchItemController.search.length,
+                      itemBuilder: (context, index) {
+                        SearchData searchItem =
+                            searchItemController.search[index];
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              width: 400.w,
+                              height: 240.w,
+                              child: InkWell(
+                                onTap: () {
+                                  Get.to(
+                                    () => ItemsInformationView(
+                                      id: searchItem.id,
+                                    ),
+                                  );
+                                },
+                                child: Card(
+                                  clipBehavior: Clip.antiAlias,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(16).w,
+                                    child: RecommendedPlacesAllComponent(
+                                      title: searchItem.name,
+                                      desc: searchItem.description,
+                                      image: searchItem.backgroundImage,
                                     ),
                                   ),
                                 ),
-                              ],
-                            );
-                          },
-                        ),
-                      );
-                    }
-                  })
-                ],
-              )
+                              ),
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                  );
+                }
+              })
             ],
           ),
         ),

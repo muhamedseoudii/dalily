@@ -18,13 +18,15 @@ class SearchItemController extends GetxController {
           'Authorization': 'Bearer $token',
         }),
       );
-      print(response);
+      print(response.data);
       if (response.statusCode == 200) {
         var data = response.data;
         if (data != null && data['data'] != null) {
           search.value = List<SearchData>.from(
             data['data'].map((item) => SearchData.fromJson(item)),
           );
+          print("data");
+          print(search);
         } else {
           print('Data or data["data"] is null.');
         }

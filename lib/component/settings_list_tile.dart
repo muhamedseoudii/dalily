@@ -8,37 +8,44 @@ class SettingsListTile extends StatelessWidget {
   final String text;
   final String image;
   final Widget? widget;
+  final void Function()? onTap;
 
   const SettingsListTile({
     Key? key,
     required this.text,
     required this.image,
     this.widget,
+    this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 55.h,
-      width: 400.w,
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-        // border: Border.fromBorderSide(BorderSide(color: Colors.red)),
-      ),
-      child: ListTile(
-        title: Text(
-          text,
-          style: AppTextStyles.largeTitle16,
+    return InkWell(
+      onTap: onTap,
+      child: Card(
+        child: Container(
+          height: 55.h,
+          width: 400.w,
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            // border: Border.fromBorderSide(BorderSide(color: Colors.red)),
+          ),
+          child: ListTile(
+            title: Text(
+              text,
+              style: AppTextStyles.largeTitle16,
+            ),
+            leading: SvgPicture.asset(
+              "assets/icons/$image.svg",
+              // colorFilter: ColorFilter.mode(
+              //     Theme.of(context).brightness == Brightness.dark
+              //         ? Colors.white
+              //         : Colors.black,
+              //     BlendMode.srcIn),
+            ),
+            trailing: widget,
+          ),
         ),
-        leading: SvgPicture.asset(
-          "assets/icons/$image.svg",
-          colorFilter: ColorFilter.mode(
-              Theme.of(context).brightness == Brightness.dark
-                  ? Colors.white
-                  : Colors.black,
-              BlendMode.srcIn),
-        ),
-        trailing: widget,
       ),
     );
   }

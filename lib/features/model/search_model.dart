@@ -49,7 +49,8 @@ class SearchData {
       images: List<String>.from(json['images'].map((x) => x)),
       about: json['About'] as String,
       v: json['__v'],
-      backgroundImage: json['backGroundImage'] as String,
+      backgroundImage: json['backGroundImage'] ??
+          'https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png',
     );
   }
 }
