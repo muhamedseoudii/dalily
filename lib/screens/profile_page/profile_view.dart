@@ -11,14 +11,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePageView extends StatelessWidget {
   const ProfilePageView({Key? key}) : super(key: key);
+  static Future<void> clearSharedPreferences() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.remove('email');
+  }
 
   @override
   Widget build(BuildContext context) {
-    Future<void> clearSharedPreferences() async {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      await prefs.remove('email');
-    }
-
     ProfileController profileController = Get.find()..fetchUser();
     return Scaffold(body: Obx(
       () {
@@ -44,7 +43,7 @@ class ProfilePageView extends StatelessWidget {
                               child: Center(
                                 child: Text(
                                   "My Account".tr,
-                                  style: AppTextStyles.largeTitle22,
+                                  style: AppTextStyles.largeTitleBlack22,
                                 ),
                               ),
                             ),
@@ -96,7 +95,7 @@ class ProfilePageView extends StatelessWidget {
                         SizedBox(height: 20.h),
                         FilledButtomEdit(
                           text: "Sign Out".tr,
-                          color: const Color(0xffD50000),
+                          color: const Color(0xff79A3D3),
                           size: 16.sp,
                           color1: Colors.white,
                           onClick: () {
@@ -106,6 +105,49 @@ class ProfilePageView extends StatelessWidget {
                                 Get.offAllNamed('/login');
                               }
                             });
+                          },
+                        ),
+                        SizedBox(height: 20.h),
+                        FilledButtomEdit(
+                          text: "delete account".tr,
+                          color: const Color(0xffD50000),
+                          size: 16.sp,
+                          color1: Colors.white,
+                          onClick: () {
+                            Get.defaultDialog(
+                              radius: 16.r,
+                              contentPadding: EdgeInsets.all(16),
+                              title: 'confirm deletion'.tr,
+                              middleText: 'are you sure'.tr,
+                              actions: [
+                                FilledButtomEdit(
+                                  text: "confirm".tr,
+                                  color: Colors.red,
+                                  size: 16.sp,
+                                  color1: Colors.white,
+                                  onClick: () {
+                                    Get.back(); // Close the dialog
+                                    profileController
+                                        .deleteAccount()
+                                        .then((value) {
+                                      if (value) {
+                                        clearSharedPreferences();
+                                        Get.offAllNamed('/login');
+                                      }
+                                    });
+                                  },
+                                ),
+                                FilledButtomEdit(
+                                  text: "cancel".tr,
+                                  color: const Color(0xff79A3D3),
+                                  size: 16.sp,
+                                  color1: Colors.white,
+                                  onClick: () {
+                                    Get.back();
+                                  },
+                                ),
+                              ],
+                            );
                           },
                         ),
                       ],

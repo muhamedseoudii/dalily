@@ -3,10 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LocaleController extends GetxController {
-  // Future<void> initSharedPreferences() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  // }
-
   Locale inialLang =
       pref?.getString("lang") == "ar" ? const Locale("ar") : const Locale("en");
 

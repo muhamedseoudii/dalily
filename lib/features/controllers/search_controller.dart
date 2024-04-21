@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../main.dart';
+
 class SearchItemController extends GetxController {
   RxList<SearchData> search = <SearchData>[].obs;
 
@@ -10,7 +12,6 @@ class SearchItemController extends GetxController {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String token = prefs.getString('token') ?? '';
-      Dio dio = Dio();
       var response = await dio.get(
         'https://dalilalhafr.com/api/items/search',
         data: {'word': query},

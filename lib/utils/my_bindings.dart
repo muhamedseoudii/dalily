@@ -7,6 +7,8 @@ import 'package:dalily/features/controllers/otp_controller.dart';
 import 'package:dalily/features/controllers/profile_controller.dart';
 import 'package:dalily/features/controllers/register_controllers.dart';
 import 'package:dalily/features/controllers/reset_pass_controller.dart';
+import 'package:dalily/features/controllers/theme_service_controller.dart';
+import 'package:dalily/features/controllers/toggletap_contoller.dart';
 import 'package:dalily/features/controllers/top_items_controller.dart';
 import 'package:dalily/features/controllers/url_controller.dart';
 import 'package:get/get.dart';
@@ -25,5 +27,6 @@ class MyBindings implements Bindings {
     Get.put(TopItemController());
     Get.put(ItemController());
     Get.put(ProfileController());
+    Get.put(ThemeController());
   }
 }

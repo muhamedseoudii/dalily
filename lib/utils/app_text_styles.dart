@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 abstract class AppTextStyles {
   static const largeTitle22 =
       TextStyle(fontSize: 22, fontWeight: FontWeight.w700);
+  static const largeTitleBlack22 =
+      TextStyle(fontSize: 22, fontWeight: FontWeight.w700, color: Colors.black);
   static const largeTitle16 = TextStyle(
       fontSize: 16,
       fontWeight: FontWeight.w700,
@@ -11,6 +13,12 @@ abstract class AppTextStyles {
     fontSize: 14,
     fontWeight: FontWeight.w700,
     color: Color(0xff8A8A8E),
+    overflow: TextOverflow.fade,
+  );
+  static const mediumWhiteTitle14 = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
     overflow: TextOverflow.fade,
   );
   static const mediumTitle14 = TextStyle(

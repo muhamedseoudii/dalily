@@ -14,6 +14,7 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final FocusNode buttonFocusNode = FocusNode();
+    final formKey = GlobalKey<FormState>();
     return Scaffold(
       // resizeToAvoidBottomInset: false,
       body: SafeArea(
@@ -51,7 +52,7 @@ class LoginView extends StatelessWidget {
                     GetBuilder<LoginController>(
                       builder: (controller) {
                         return Form(
-                          key: controller.formKey,
+                          key: formKey,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -113,7 +114,7 @@ class LoginView extends StatelessWidget {
                                         size: 16,
                                         color1: Colors.white,
                                         onClick: () {
-                                          if (controller.formKey.currentState!
+                                          if (formKey.currentState!
                                               .validate()) {
                                             // Passwords are valid and match
                                             // Perform further actions like saving the password

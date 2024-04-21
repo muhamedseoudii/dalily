@@ -1,17 +1,20 @@
 class CategoryModel {
   final bool status;
-  final List<CategoryData> data;
+  final List<CategoryData>? data;
 
   CategoryModel({
     required this.status,
-    required this.data,
+    this.data,
   });
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) {
     return CategoryModel(
       status: json['status'],
-      data: List<CategoryData>.from(
-          json['data'].map((x) => CategoryData.fromJson(x))),
+      data: json['data'] != null
+          ? List<CategoryData>.from(
+              json['data'].map((x) => CategoryData.fromJson(x)),
+            )
+          : null, // Set data to null if 'data' key is null
     );
   }
 }

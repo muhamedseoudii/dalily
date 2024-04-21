@@ -1,7 +1,6 @@
 import 'package:dalily/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:flutter_svg/svg.dart';
 
 class SettingsListTile extends StatelessWidget {
@@ -9,6 +8,7 @@ class SettingsListTile extends StatelessWidget {
   final String image;
   final Widget? widget;
   final void Function()? onTap;
+  final ColorFilter? colorFilter;
 
   const SettingsListTile({
     Key? key,
@@ -16,6 +16,7 @@ class SettingsListTile extends StatelessWidget {
     required this.image,
     this.widget,
     this.onTap,
+    this.colorFilter,
   }) : super(key: key);
 
   @override
@@ -35,14 +36,8 @@ class SettingsListTile extends StatelessWidget {
               text,
               style: AppTextStyles.largeTitle16,
             ),
-            leading: SvgPicture.asset(
-              "assets/icons/$image.svg",
-              // colorFilter: ColorFilter.mode(
-              //     Theme.of(context).brightness == Brightness.dark
-              //         ? Colors.white
-              //         : Colors.black,
-              //     BlendMode.srcIn),
-            ),
+            leading: SvgPicture.asset("assets/icons/$image.svg",
+                colorFilter: colorFilter),
             trailing: widget,
           ),
         ),

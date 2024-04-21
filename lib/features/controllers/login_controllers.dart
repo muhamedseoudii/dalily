@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginController extends GetxController {
-  final formKey = GlobalKey<FormState>();
   bool obscureT = true;
   TextEditingController controller1 = TextEditingController();
   TextEditingController controller2 = TextEditingController();

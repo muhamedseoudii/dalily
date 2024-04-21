@@ -1,4 +1,5 @@
 import 'package:dalily/features/controllers/locale_controller.dart';
+import 'package:dalily/features/controllers/theme_service_controller.dart';
 import 'package:dalily/screens/forget_password/forgetpass_view.dart';
 import 'package:dalily/screens/login/login_view.dart';
 import 'package:dalily/screens/navigator_bar/view.dart';
@@ -9,6 +10,7 @@ import 'package:dalily/utils/my_bindings.dart';
 import 'package:dalily/utils/my_locale.dart';
 import 'package:dalily/utils/themes_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
@@ -17,6 +19,7 @@ class AppRoot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
     LocaleController controller = Get.put(LocaleController());
     return ScreenUtilInit(
       designSize: const Size(375, 812),
@@ -28,8 +31,11 @@ class AppRoot extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           locale: controller.inialLang,
           translations: MyLocale(),
-          theme: ThemeClass.lightTheme,
-          darkTheme: ThemeClass.darkTheme,
+          theme: ThemeClass().lightTheme,
+          darkTheme: ThemeClass().darkTheme,
+          themeMode: ThemeController().isDarkMode.value
+              ? ThemeMode.dark
+              : ThemeMode.light,
           initialBinding: MyBindings(),
           initialRoute: '/',
           getPages: [

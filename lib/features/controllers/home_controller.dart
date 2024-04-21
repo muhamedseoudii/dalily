@@ -3,6 +3,8 @@ import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../main.dart';
+
 class CategoryController extends GetxController {
   RxBool isLoading = true.obs;
   RxList<CategoryData> categories = <CategoryData>[].obs;
@@ -13,7 +15,7 @@ class CategoryController extends GetxController {
       isLoading(true);
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String token = prefs.getString('token') ?? '';
-      Dio dio = Dio();
+
       final response = await dio.get(
         "https://dalilalhafr.com/api/cats/getCats",
         options: Options(headers: {

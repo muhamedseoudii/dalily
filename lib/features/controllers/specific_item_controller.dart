@@ -4,6 +4,8 @@ import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../main.dart';
+
 class SpecificItemController extends GetxController {
   RxBool isLoading = true.obs;
   RxBool isLoadingReview = true.obs;
@@ -16,7 +18,6 @@ class SpecificItemController extends GetxController {
       isLoading(true);
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String token = prefs.getString('token') ?? '';
-      Dio dio = Dio();
       final response = await dio.get(
         "https://dalilalhafr.com/api/items/getSpecificItem",
         data: {"itemId": itemId},
@@ -51,7 +52,6 @@ class SpecificItemController extends GetxController {
       isLoadingReview(true);
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String token = prefs.getString('token') ?? '';
-      Dio dio = Dio();
       final response = await dio.post(
         "https://dalilalhafr.com/api/reviews/addReview",
         data: {"review": review, "item": itemId, "rating": rating},

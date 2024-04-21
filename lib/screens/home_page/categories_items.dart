@@ -3,7 +3,6 @@ import 'package:dalily/features/controllers/category_item_controller.dart';
 import 'package:dalily/features/model/category_model.dart';
 import 'package:dalily/features/model/item_model.dart';
 import 'package:dalily/screens/home_page/items_information.dart';
-import 'package:dalily/screens/navigator_bar/view.dart';
 import 'package:dalily/screens/search_page/search_view.dart';
 import 'package:dalily/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -43,11 +42,14 @@ class CategoriesItemsView extends StatelessWidget {
           ),
         ],
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16).w,
-          child: SingleChildScrollView(
-            physics: const AlwaysScrollableScrollPhysics(),
+      body: RefreshIndicator(
+        color: Color(0xff79A3D3),
+        onRefresh: () async {
+          categoryItemController.fetchItemCategories(model.title);
+        },
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(16).w,
             child: Column(
               children: [
                 Obx(() {
@@ -57,8 +59,7 @@ class CategoriesItemsView extends StatelessWidget {
                     return const Center(
                         child: Text('Error loading categories'));
                   } else {
-                    return SizedBox(
-                      height: 700.h,
+                    return Expanded(
                       child: ListView.builder(
                         scrollDirection: Axis.vertical,
                         itemCount: categoryItemController.categories.length,

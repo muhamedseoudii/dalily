@@ -10,6 +10,7 @@ class TextFieldEdit extends StatelessWidget {
   final TextEditingController controller;
   final String validateText;
   final Widget? icon;
+  final TextStyle? style;
 
   const TextFieldEdit(
       {Key? key,
@@ -18,7 +19,8 @@ class TextFieldEdit extends StatelessWidget {
       required this.controller,
       required this.validateText,
       this.icon,
-      this.hintText})
+      this.hintText,
+      this.style})
       : super(key: key);
 
   @override
@@ -27,6 +29,7 @@ class TextFieldEdit extends StatelessWidget {
     return TextFormField(
       controller: controller,
       keyboardType: TextInputType.emailAddress,
+      style: style,
       decoration: InputDecoration(
         hintText: hintText,
         labelText: labelText,
@@ -70,12 +73,14 @@ class TextFieldEdit2 extends StatelessWidget {
   final String text;
   final String image;
   final TextEditingController controller;
+  final TextStyle? style;
 
   const TextFieldEdit2(
       {Key? key,
       required this.text,
       required this.image,
-      required this.controller})
+      required this.controller,
+      this.style})
       : super(key: key);
 
   @override
@@ -84,6 +89,7 @@ class TextFieldEdit2 extends StatelessWidget {
     return TextFormField(
       controller: controller,
       keyboardType: TextInputType.name,
+      style: style,
       decoration: InputDecoration(
         labelText: text,
         labelStyle: TextStyle(
@@ -126,13 +132,15 @@ class TextFieldEdit1 extends StatelessWidget {
   final String image;
   final void Function()? onClick;
   final TextEditingController controller1;
+  final TextStyle? style;
 
   const TextFieldEdit1(
       {Key? key,
       required this.text,
       required this.image,
       required this.onClick,
-      required this.controller1})
+      required this.controller1,
+      this.style})
       : super(key: key);
 
   @override
@@ -141,6 +149,7 @@ class TextFieldEdit1 extends StatelessWidget {
     return TextFormField(
       controller: controller1,
       keyboardType: TextInputType.visiblePassword,
+      style: style,
       // cursorColor: Colors.black,
       decoration: InputDecoration(
         labelText: text,
@@ -195,6 +204,7 @@ class TextFieldEdit4 extends StatelessWidget {
   final TextEditingController controller1;
   final Widget icon;
   final bool obscureText;
+  final TextStyle? style;
 
   const TextFieldEdit4(
       {Key? key,
@@ -203,7 +213,8 @@ class TextFieldEdit4 extends StatelessWidget {
       required this.onClick,
       required this.controller1,
       required this.icon,
-      required this.obscureText})
+      required this.obscureText,
+      this.style})
       : super(key: key);
 
   @override
@@ -211,6 +222,7 @@ class TextFieldEdit4 extends StatelessWidget {
     return TextFormField(
       controller: controller1,
       keyboardType: TextInputType.visiblePassword,
+      style: style,
       decoration: InputDecoration(
         hintText: text,
         hintStyle: TextStyle(
@@ -262,6 +274,7 @@ class TextFieldEdit3 extends StatelessWidget {
   final Widget icon;
   final bool obscureText;
   final TextEditingController controller4;
+  final TextStyle? style;
 
   const TextFieldEdit3(
       {Key? key,
@@ -271,7 +284,8 @@ class TextFieldEdit3 extends StatelessWidget {
       required this.controller3,
       required this.icon,
       required this.obscureText,
-      required this.controller4})
+      required this.controller4,
+      this.style})
       : super(key: key);
 
   @override
@@ -279,6 +293,7 @@ class TextFieldEdit3 extends StatelessWidget {
     return TextFormField(
       controller: controller3,
       keyboardType: TextInputType.visiblePassword,
+      style: style,
       decoration: InputDecoration(
         hintText: text,
         hintStyle: TextStyle(
@@ -348,6 +363,7 @@ class SearchTextField extends StatelessWidget {
       controller: controller,
       onChanged: onChanged,
       keyboardType: TextInputType.text,
+      style: TextStyle(color: Colors.black),
       decoration: InputDecoration(
         hintText: text,
         hintStyle: TextStyle(
@@ -358,7 +374,10 @@ class SearchTextField extends StatelessWidget {
         hintMaxLines: 1,
         prefixIcon: SvgPicture.asset(image, fit: BoxFit.scaleDown),
         suffixIcon: IconButton(
-          icon: const Icon(Icons.clear),
+          icon: const Icon(
+            Icons.clear,
+            color: Colors.black,
+          ),
           onPressed: onClick,
         ),
         filled: true,
@@ -397,6 +416,9 @@ class CommentTextField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       keyboardType: TextInputType.text,
+      style: TextStyle(
+        color: Colors.black,
+      ),
       decoration: InputDecoration(
         hintText: text,
         hintStyle: TextStyle(

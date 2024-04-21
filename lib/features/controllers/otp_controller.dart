@@ -59,6 +59,7 @@ class OTPController extends GetxController {
       if (response.statusCode == 200) {
         final data = jsonDecode(response.toString());
         final message = data['message'];
+        Get.offAll(() => const ResetPasswordView());
         Get.snackbar(
           'Successful',
           message,
@@ -74,7 +75,6 @@ class OTPController extends GetxController {
       if (kDebugMode) {
         print(response.data);
       }
-      Get.offAll(() => const ResetPasswordView());
     } on DioException catch (e) {
       if (e.response != null) {
         // The request was made and the server responded with a status code

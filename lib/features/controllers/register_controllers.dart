@@ -41,11 +41,20 @@ class RegisterController extends GetxController {
         },
       );
       // Handle response
+      final data = response.data;
+      final message = data['message'];
       token(response.data['token']);
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('email', controller1.text);
       prefs.setString('token', response.data['token']);
-      Get.snackbar("Register", "Successfully");
+      Get.snackbar(
+        'Message',
+        message,
+        duration: const Duration(seconds: 2),
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: Colors.green,
+        colorText: Colors.white,
+      );
       if (kDebugMode) {
         print(response.data);
       }

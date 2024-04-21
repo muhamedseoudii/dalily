@@ -1,5 +1,8 @@
 import 'package:dalily/features/controllers/locale_controller.dart';
+import 'package:dalily/features/controllers/toggletap_contoller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
 import 'package:get/get.dart';
 
 class LanguageView extends StatelessWidget {
@@ -7,7 +10,9 @@ class LanguageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<bool> isSelected = [true, false];
+    // List<bool> isSelected = [true, false];
+    final ToggleTabController toggleTabController =
+        Get.put(ToggleTabController());
     LocaleController controllerLang = Get.find();
     return Scaffold(
       appBar: AppBar(title: Text("Change Language".tr)),
@@ -17,37 +22,24 @@ class LanguageView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Center(
-              child: ToggleButtons(
-                isSelected: isSelected,
-                onPressed: (int index) {
-                  for (int buttonIndex = 0;
-                      buttonIndex < isSelected.length;
-                      buttonIndex++) {
-                    isSelected[buttonIndex] = buttonIndex == index;
-                  }
-
+              child: FlutterToggleTab(
+                width: 70.w,
+                height: 50.h,
+                selectedIndex: toggleTabController.selectedIndex.value,
+                selectedTextStyle: TextStyle(color: Colors.white),
+                unSelectedTextStyle: TextStyle(color: Colors.black),
+                selectedBackgroundColors: [Color(0xff79A3D3)],
+                unSelectedBackgroundColors: [Colors.white],
+                labels: ["English", "عربى"],
+                selectedLabelIndex: (index) {
+                  toggleTabController.setSelectedIndex(index);
                   if (index == 0) {
                     controllerLang.changeLang("en");
                   } else {
                     controllerLang.changeLang("ar");
                   }
-                  Get.back();
+                  // Get.back();
                 },
-                selectedBorderColor: const Color(0xffE0E0E0),
-                borderColor: const Color(0xffE0E0E0),
-                borderRadius: BorderRadius.circular(8),
-                children: const [
-                  SizedBox(
-                    width: 175, // Half of the desired width
-                    height: 80,
-                    child: Center(child: Text("English")),
-                  ),
-                  SizedBox(
-                    width: 175, // Half of the desired width
-                    height: 80,
-                    child: Center(child: Text("عربى")),
-                  ),
-                ],
               ),
             ),
           ],

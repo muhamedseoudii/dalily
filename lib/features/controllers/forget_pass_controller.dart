@@ -28,6 +28,7 @@ class ForgetController extends GetxController {
       if (response.statusCode == 200) {
         final data = jsonDecode(response.toString());
         final message = data['message'];
+        Get.offAll(() => const EmailCheckView());
         Get.snackbar(
           'Message',
           message,
@@ -43,7 +44,6 @@ class ForgetController extends GetxController {
       if (kDebugMode) {
         print(response.data);
       }
-      Get.offAll(() => const EmailCheckView());
     } on DioException catch (e) {
       if (e.response != null) {
         // The request was made and the server responded with a status code

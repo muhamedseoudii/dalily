@@ -45,7 +45,8 @@ class SpecificItemData {
       category: SpecificItemCategoryData.fromJson(json['category']),
       ratingsAverage: json['ratingsAverage'].toDouble() ?? 0,
       ratingsQuantity: json['ratingsQuantity'].toDouble(),
-      images: List<String>.from(json['images'].map((x) => x)),
+      images: List<String>.from(json['images'].map((x) => x) ??
+          'https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png'),
       about: json['About'],
       backGroundImage: json['backGroundImage'] ??
           'https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png',

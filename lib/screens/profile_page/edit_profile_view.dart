@@ -3,6 +3,7 @@ import 'package:dalily/component/text_field_custom.dart';
 import 'package:dalily/features/controllers/edit_profile_controller.dart';
 import 'package:dalily/features/controllers/profile_controller.dart';
 import 'package:dalily/utils/app_text_styles.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -69,30 +70,54 @@ class EditProfileView extends StatelessWidget {
                                   child: IconButton(
                                     onPressed: () {
                                       Get.bottomSheet(
-                                        backgroundColor: Colors.white,
-                                        Wrap(
-                                          children: [
-                                            ListTile(
-                                              leading: const Icon(Icons.camera),
-                                              title: Text('Take a photo'.tr),
-                                              onTap: () {
-                                                Get.back();
-                                                controller
-                                                    .pickImageFromCamera();
-                                              },
+                                        ClipRRect(
+                                          borderRadius: BorderRadius.vertical(
+                                              top: Radius.circular(16)),
+                                          child: Container(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.23,
+                                            // Set the desired height here
+                                            color: Get.isDarkMode
+                                                ? Colors.black
+                                                : Colors.white,
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(16),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  ListTile(
+                                                    leading: const Icon(
+                                                        Icons.camera),
+                                                    title:
+                                                        Text('Take a photo'.tr),
+                                                    onTap: () {
+                                                      Get.back();
+                                                      controller
+                                                          .pickImageFromCamera();
+                                                    },
+                                                  ),
+                                                  ListTile(
+                                                    leading:
+                                                        const Icon(Icons.photo),
+                                                    title: Text(
+                                                        'Choose from gallery'
+                                                            .tr),
+                                                    onTap: () {
+                                                      Get.back();
+                                                      controller
+                                                          .pickImageFromGallery();
+                                                    },
+                                                  ),
+                                                ],
+                                              ),
                                             ),
-                                            ListTile(
-                                              leading: const Icon(Icons.photo),
-                                              title: Text(
-                                                  'Choose from gallery'.tr),
-                                              onTap: () {
-                                                Get.back();
-                                                controller
-                                                    .pickImageFromGallery();
-                                              },
-                                            ),
-                                          ],
+                                          ),
                                         ),
+                                        isScrollControlled: true,
+                                        barrierColor:
+                                            Colors.black.withOpacity(0.5),
                                       );
                                     },
                                     icon: const Icon(Icons.camera_alt),

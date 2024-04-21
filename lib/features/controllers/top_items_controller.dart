@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../main.dart';
+
 class TopItemController extends GetxController {
   RxBool isLoading = true.obs;
   RxList<TopItemData> items = <TopItemData>[].obs;
@@ -13,7 +15,6 @@ class TopItemController extends GetxController {
       isLoading(true);
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String token = prefs.getString('token') ?? '';
-      Dio dio = Dio();
       final response = await dio.get(
         "https://dalilalhafr.com/api/items/top-5",
         options: Options(headers: {
@@ -21,9 +22,9 @@ class TopItemController extends GetxController {
         }),
       );
       var data = response.data;
-      if (data != null) {
+      if (data != null && data['data'] != null) {
         items.value = List<TopItemData>.from(
-          data['data'].map((item) => TopItemData.fromJson(item)),
+          data['data']?.map((item) => TopItemData.fromJson(item)),
         );
         isError(false);
       } else {
